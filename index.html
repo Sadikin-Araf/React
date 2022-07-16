@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Detector</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .sub {
+            display: inline-block;
+            font-size: 40px;
+        }
+
+        .pow {
+            display: inline-block;
+            position: relative;
+            font-size: 30px;
+            top: -13px;
+
+        }
+
+        .an {
+            width: 211px;
+            height: 41px;
+            border-radius: 28px;
+            font-size: 24px;
+            text-align: center;
+            border: 3px solid #ededed;
+            background: #ffffff47;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="inSection">
+            <input type="number" onchange="start()" onkeyup="start()" name="atomic number" class="an">
+        </div>
+
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+        <div class="sub"></div>
+        <div class="pow"></div>
+
+
+
+    </div>
+    <script>
+        var subshell = []
+        var ShellEN = [2, 2, 6, 2, 6, 2, 10, 6, 2, 10, 6, 2, 14, 10, 6, 2, 14, 10, 6, 2]
+        var ShellName = ['1s', '2s', '2p', '3s', '3p', '4s', '3d', '4p', '5s', '4d', '5p', '6s', '4f', '5d', '6p', '7s', '5f', '6d', '7p']
+
+        var co = document.querySelector(".container")
+
+        var subPrint = document.querySelectorAll(".sub")
+        var powPrint = document.querySelectorAll(".pow")
+
+        function start() {
+            var inp = document.querySelector(".an").value
+            subshell.length = 0;
+            for (let e = 0; e < subshell.length; e++) {
+
+                subPrint[e].innerHTML = "";
+                powPrint[e].innerHTML = "";
+
+            }
+
+            for (let i = 0; i < ShellEN.length; i++) {
+                if (inp > ShellEN[i]) {
+                    inp = inp - ShellEN[i];
+                    subshell[i] = ShellEN[i]
+                } else {
+                    subshell[i] = inp;
+                    inp = 0;
+                    break
+                }
+
+            }
+            if (subshell[6] == 4 && subshell[5] == 2) {
+                subshell[5] = 1;
+                subshell[6] = 5;
+            }
+            if (subshell[6] == 9 && subshell[5] == 2) {
+                subshell[5] = 1;
+                subshell[6] = 10;
+            }
+            if (subshell[9] == 3 && subshell[8] == 2) {
+                subshell[9] = 4;
+                subshell[8] = 1;
+            }
+            if (subshell[9] == 4 && subshell[8] == 2) {
+                subshell[9] = 5;
+                subshell[8] = 1;
+            }
+            if (subshell[9] == 6 && subshell[8] == 2) {
+                subshell[9] = 7;
+                subshell[8] = 1;
+            }
+            if (subshell[9] == 7 && subshell[8] == 2) {
+                subshell[9] = 8;
+                subshell[8] = 1;
+            }
+            if (subshell[9] == 8 && subshell[8] == 2) {
+                subshell[9] = 10;
+                subshell[8] = 0;
+            }
+            if (subshell[9] == 9 && subshell[8] == 2) {
+                subshell[9] = 10;
+                subshell[8] = 1;
+            }
+            if (subshell[12] == 1 && subshell[13]==undefined) {
+                subshell[12] = 0;
+                subshell[13] = 1;
+            }
+            if (subshell[12] == 2 && subshell[13]==1) {
+                subshell[12] = 1;
+                subshell[13] = 1;
+            }
+            
+
+            for (let e = 0; e < subshell.length; e++) {
+
+                subPrint[e].innerHTML = ShellName[e];
+                powPrint[e].innerHTML = subshell[e];
+
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
